@@ -2,7 +2,6 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.ui import WebDriverWait
 import datetime
 import time
 
@@ -23,94 +22,123 @@ class webdriver_chrome():
         # 以最高权限运行
         self.option.add_argument('--no-sandbox')
 
-        #self.option.page_load_strategy = 'normal'
-        self.option.page_load_strategy = 'eager'    #WebDriver waits until DOMContentLoaded event fire is returned.
-        
-
         # driver = webdriver.Chrome(chrome_options=option)  # Chrome浏览器配置
-        
         self.driver = webdriver.Chrome(options=self.option)  # 打开Chrome浏览器UI界面配置
-        
 
         self.web_address ="http://cnhuam0rptq01/reports/report/QM2%20Customized%20Reports/Defect%20Report_mirror"
         #self.web_address ="http://10.114.26.174:8002/"
         
 
-    def save_page(self,page):
-        with open(file="page.html",mode="w",encoding="utf-8") as f:
-            f.write(page) 
-
-    def wait_until_loaded(self,Ele="Element_to_be_found"):
         
-        try:
-            elem = WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((By.ID, Ele)) #This is a dummy element
-            )
-        finally:
-            driver.quit()
-    
-    def wait_until_element_found(self,Element1="</html>",timeout=60):
-        ''' 等待字符串str1在 page_source 中出现
-        '''
-        el=None
-        t=1
-        while el==None and t<timeout:
-            if el==None:
-                try:
-                    el=self.driver.find_element(by=By.CLASS_NAME,value=Element1)
-                except:
-                    el=None
-                finally:
-                    pass
-
-            if el==None:
-                try:
-                    el=self.driver.find_element(by=By.NAME,value=Element1)
-                except:
-                    el=None
-                finally:
-                    pass
-
-            if el==None:
-                try:
-                    el=self.driver.find_element(by=By.ID,value=Element1)
-                except:
-                    el=None
-                finally:
-                    pass
-
-            time.sleep(1)
-            t=t+1
-        return el
-
 
     # 使用谷歌浏览器模拟执行
     def open_web(self):
 
         print('打开网页')
         self.driver.get(self.web_address)  # 打开url网页
-        self.driver.implicitly_wait(60)
-
-        #self.driver_Org=self.driver
-
+        time.sleep(10)
         # self.driver.refresh()
 
-        print('Switch_to Frame')
+        
+
+
+
+        
+        
+        # input username
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "main navbar-fixed-top ng-scope")
+        TextBox3 = self.driver.find_element(By.NAME, "report")
+        TextBox3 = self.driver.find_element(By.NAME, "page")
+        TextBox3 = self.driver.find_element(By.NAME, "ParamEntryCell")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "container-fluid")
+        TextBox3 = self.driver.find_element(By.NAME, "ParamEntryCell")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
+
+
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar-header") #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar-skip-content")   #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "mobilenav-toggle")  #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "nav-browse")    #Ok
+        TextBox3.click()    #Ok.
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar navbar-default ng-scope")    #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar")    #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "container-fluid")   #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar-header") #oK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "navbar-skip-content") #oK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "nav-help dropdown") #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "dropdown")     #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "nav-icon dropdown-toggle") #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "nav-icon")      #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "dropdown-toggle")   #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "links")     #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "links")     #Ok
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "screen-reader-offscreen ng-binding")    #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "screen-reader-offscreen")    #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ng-binding")    #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "view ng-scope") #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "view") #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ng-scope") #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ng-scope")  #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "viewerContentContainer showChrome") #Fail
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "viewerContentContainer") #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "showChrome") #OK
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "breadcrumbs")   #OK
+
+
+
+
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ParamLabelCell")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ParamEntryCell")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "screen-reader-offscreen ng-binding")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "aspNetHidden")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "view ng-scope")
+        
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "viewerContentContainer showChrome")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "breadcrumbs")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxx")
+
+
+        TextBox3 = self.driver.find_element(By.ID, "headID")
+        TextBox3 = self.driver.find_element(By.ID, "subnav")    #Ok
+        TextBox3 = self.driver.find_element(By.ID, "ReportViewerForm")  #Ok
+        TextBox3 = self.driver.find_element(By.ID, "page")  #Ok
+        TextBox3 = self.driver.find_element(By.ID, "subnav")    #Ok
+
+
+        TextBox3 = self.driver.find_element(By.ID, "ParamEntryCell")
+        TextBox3 = self.driver.find_element(By.ID, "NavigationCorrector_ScrollPosition")
+        TextBox3 = self.driver.find_element(By.ID, "NavigationCorrector")
+        TextBox3 = self.driver.find_element(By.ID, "ReportViewerControl_ReportViewer")
+        TextBox3 = self.driver.find_element(By.ID, "headID")
+
+        TextBox3 = self.driver.find_elements(By.ID)
+        TextBox3 = self.driver.find_elements(By.CLASS_NAME,"viewer")
+        TextBox3 = self.driver.find_elements(By.CLASS_NAME,"aspNetHidden")
+
+
+        TextBox3 = self.driver.find_element(By.XPATH, "//form[@id='loginForm']")
+        TextBox3 = self.driver.find_element(By.XPATH, "//form[@id='loginForm']")
+        TextBox3 = self.driver.find_element(By.XPATH, "//<select name")
+
+
+
         # iframe = self.driver.find_element(By.CSS_SELECTOR, "#modal > iframe")
         #iframe = self.driver.find_element(By.CLASS_NAME, "view")
         # switch to selected iframe
         self.driver.switch_to.frame(0)
-        self.wait_until_element_found(Element1='ParamEntryCell')
-        self.wait_until_element_found(Element1='ReportViewerControl$ctl04$ctl03$ddValue')
-        time.sleep(2)
-
-
-        print('Select Customer')
+        
         TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
         TextBox3.click()    #Ok.
         TextBox3.send_keys("HP/Printer Motherboard")
-
-
+        
 
         TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
         TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")

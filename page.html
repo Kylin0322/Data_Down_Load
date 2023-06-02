@@ -1,0 +1,306 @@
+<html lang="en" id="portal" ng-controller="MainController as main" ng-class="{'flex':main.needsCssFlex}" ng-strict-di="" resizer="" class="ng-scope flex"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+    <title ng-bind="main.documentTitle" class="ng-binding">Defect Report_mirror - SQL Server Reporting Services</title>
+
+    <script type="text/javascript">
+        var locName = window.location.pathname.split('/')[1];
+        document.write("<base href='/" + locName + "/' />");
+
+        //Favicon Related elements
+        var favIconPath = window.location.origin + "/" + locName + "/favicon.ico";
+        document.write("<link rel='shortcut icon' href='" + favIconPath + "' />");
+        document.write("<link rel='icon' href='" + favIconPath + "' />");
+    </script><base href="/reports/"><link rel="shortcut icon" href="http://cnhuam0rptq01/reports/favicon.ico"><link rel="icon" href="http://cnhuam0rptq01/reports/favicon.ico">
+
+    <!--Favicon Related elements-->
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/img/fi/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/img/fi/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/img/fi/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/img/fi/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/img/fi/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/img/fi/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/img/fi/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/img/fi/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/fi/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/fi/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/fi/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/img/fi/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/fi/favicon-16x16.png">
+    <link rel="manifest" href="assets/img/fi/manifest.json">
+    <meta name="msapplication-TileColor" content="#eaeaea">
+    <meta name="msapplication-TileImage" content="assets/img/fi/ms-icon-144x144.png">
+    <meta name="msapplication-config" content="assets/img/fi/browserconfig.xml">
+    <!--End of Favicon Related elements-->
+
+    <!-- css and scripts are injected at build time by gulpfile.js -->
+    <script type="text/javascript">
+        // inject:css
+        document.write("<link rel='stylesheet' href='assets/css/app-13-0-1601-5-bundle.min.css'>");
+        document.write("<link rel='stylesheet' href='assets/css/brand.css'>");
+        // endinject:css
+    </script><link rel="stylesheet" href="assets/css/app-13-0-1601-5-bundle.min.css"><link rel="stylesheet" href="assets/css/brand.css">
+<script src="assets/lib/js/application-insights/application-insights.js"></script></head>
+
+<body class="report" ng-class="{'branded':isBranded, 'nonwindows':!main.isWindows}" translate-cloak="">
+    <div id="page">
+        <!-- ngIf: showChrome --><header class="main navbar-fixed-top ng-scope" ng-if="showChrome">
+            <navbar><nav class="navbar navbar-default ng-scope" ng-controller="NavbarController">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="javascript:void(0);" class="navbar-skip-content" aria-labelledby="skip-to-content-label" ng-click="skipToSiteContent()">
+                <span id="skip-to-content-label" ng-bind="'NAVBAR.SKIP' | translate" class="ng-binding">Skip to content</span>
+            </a>
+
+            <!-- ngIf: enableNavigation --><a href="javascript:void(0);" class="mobilenav-toggle ng-scope" data-target=".mobilenav-main-menu,a.mobilenav-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ng-if="enableNavigation">
+                <span class="glyphui glyphui-threebars"></span>
+                <span class="sr-only ng-binding" ng-bind="'NAVBAR.TOGGLE_NAVIGATION' | translate">Toggle navigation</span>
+            </a><!-- end ngIf: enableNavigation -->
+
+            <div class="brand-wrapper">
+                <a class="navbar-brand" href="browse/" ng-href="browse/">
+                    <span class="text light ng-binding">SQL Server Reporting Services</span>
+                    <span class="logo"><img ng-src="api/v1.0/SafeGetSystemResourceContent(type='UniversalBrand',key='logo')" src="api/v1.0/SafeGetSystemResourceContent(type='UniversalBrand',key='logo')"></span>
+                </a>
+            </div>
+        </div>
+
+        <!-- ## full nav ## -->
+        <!-- ngIf: enableNavigation --><div id="fullnav" class="fullnav hidden-xs ng-scope" ng-if="enableNavigation">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-settings dropdown" uib-dropdown="">
+                    <a href="javascript:void(0);" class="nav-icon dropdown-toggle" aria-labelledby="navbar-settings-label" uib-dropdown-toggle="" tooltip="Settings" tooltip-placement="bottom" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphui glyphui-gear" id="navbar-settings-label" aria-label="Settings"></span>
+                    </a>
+
+                    <ul uib-dropdown-menu="" aria-haspopup="true" class="dropdown-menu">
+                        <li class="dropdown-header"><span ng-bind="'NAVBAR.SETTINGS' | translate" aria-hidden="true" class="ng-binding">Settings</span></li>
+                        <!-- ngIf: isMySettingsEnabled -->
+                        <!-- ngIf: isMySubscriptionsAllowed --><li ng-if="isMySubscriptionsAllowed" class="ng-scope"><a href="manage/subscriptions/browse"><span ng-bind="'NAVBAR.MY_SUBSCRIPTIONS' | translate" class="ng-binding">My subscriptions</span></a></li><!-- end ngIf: isMySubscriptionsAllowed -->
+                        <!-- ngIf: systemPermissions.canViewSiteSettings || systemPermissions.canViewSharedSchedules || systemPermissions.canViewSystemSecurity -->
+                    </ul>
+                </li>
+
+                <li class="nav-download dropdown" uib-dropdown="">
+                    <a href="javascript:void(0);" class="nav-icon dropdown-toggle" aria-labelledby="navbar-download-label" uib-dropdown-toggle="" tooltip="Download" tooltip-placement="bottom" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphui glyphui-download" id="navbar-download-label" aria-label="Download"></span>
+                    </a>
+
+                    <ul uib-dropdown-menu="" aria-haspopup="true" class="dropdown-menu">
+                        <li class="dropdown-header"><span ng-bind="'ACTIONS.DOWNLOAD' | translate" aria-hidden="true" class="ng-binding">Download</span></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkID=734969" target="_blank" href="https://go.microsoft.com/fwlink/?LinkID=734969"><span ng-bind="'BRANDS.MOBILE_REPORT_PUBLISHER' | translate" class="ng-binding">Mobile Report Publisher</span></a></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=734968" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=734968"><span ng-bind="'BRANDS.REPORT_BUILDER' | translate" class="ng-binding">Report Builder</span></a></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=734766" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=734766"><span ng-bind="'BRANDS.DESKTOP_POWER_BI' | translate" class="ng-binding">Power BI Desktop</span></a></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=717195" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=717195"><span ng-bind="'BRANDS.MOBILE_POWER_BI' | translate" class="ng-binding">Power BI Mobile</span></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-notification dropdown ng-hide" uib-dropdown="" ng-show="notificationCount > 0">
+                    <a href="javascript:void(0);" class="nav-icon dropdown-toggle" aria-labelledby="navbar-notification-label" uib-dropdown-toggle="" tooltip="Notifications" tooltip-placement="bottom" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphui glyphui-warning" id="navbar-notification-label" aria-label="Notifications"></span>
+                        <span aria-label="0" class="ng-binding">0</span>
+                    </a>
+
+                    <ul uib-dropdown-menu="" aria-haspopup="true" class="dropdown-menu">
+                        <!-- ngRepeat: notification in notifications | limitTo:2 -->
+                    </ul>
+                </li>
+
+                <li class="nav-help dropdown" uib-dropdown="">
+                    <a href="javascript:void(0);" class="nav-icon dropdown-toggle" aria-labelledby="navbar-help-label" uib-dropdown-toggle="" tooltip="Help" tooltip-placement="bottom" aria-haspopup="true" aria-expanded="false">
+                        <span class="glyphui glyphui-question" id="navbar-help-label" aria-label="Help"></span>
+                    </a>
+
+                    <ul uib-dropdown-menu="" aria-haspopup="true" class="dropdown-menu">
+                        <li class="dropdown-header"><span ng-bind="'NAVBAR.HELP' | translate" aria-hidden="true" class="ng-binding">Help</span></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=718201" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=718201"><span ng-bind="'NAVBAR.GETTING_STARTED' | translate" class="ng-binding">Getting started</span></a></li>
+                        <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=718204" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=718204"><span ng-bind="'NAVBAR.COMMUNITY' | translate" class="ng-binding">Community</span></a></li>
+                        <li><a href="javascript:void(0);" ng-click="openAbout()"><span ng-bind="'NAVBAR.ABOUT' | translate" class="ng-binding">About SQL Server Reporting Services</span></a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-user"><span><user-info class="ng-binding">Yu Wang</user-info></span></li>
+            </ul>
+        </div><!-- end ngIf: enableNavigation -->
+        <!-- ## /full nav ## -->
+
+
+        <!-- ## mobile nav ## -->
+        <!-- ngIf: enableNavigation --><div id="mobilenav" class="mobilenav visible-xs-block ng-scope" ng-if="enableNavigation">
+            <!-- buttons -->
+            <div class="mobilenav-main-menu dropdown mobile-dropdown">
+                <ul class="dropdown-menu">
+                    <li class="nav-download">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-target=".mobilenav-download-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphui glyphui-chevron-right pull-right"></span>
+                            <span class="glyphui glyphui-download" aria-hidden="true"></span>
+                            <span ng-bind="'ACTIONS.DOWNLOAD' | translate" class="ng-binding">Download</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-help">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-target=".mobilenav-help-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphui glyphui-chevron-right pull-right"></span>
+                            <span class="glyphui glyphui-question" aria-hidden="true"></span>
+                            <span ng-bind="'NAVBAR.HELP' | translate" class="ng-binding">Help</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-user"><span><user-info class="ng-binding">Yu Wang</user-info></span></li>
+                </ul>
+            </div>
+
+            <div class="mobilenav-download-menu dropdown mobile-dropdown">
+                <ul class="dropdown-menu">
+                    <li class="mobilenav-back">
+                        <a href="javascript:void(0);" data-target=".mobilenav-main-menu,a.mobilenav-toggle" data-toggle="dropdown">
+                            <span class="glyphui glyphui-chevron-left"></span>
+                            <span ng-bind="'ACTIONS.BACK' | translate" class="ng-binding">Back</span>
+                        </a>
+                    </li>
+                    <li class="hide-nonwindows"><a ng-href="https://go.microsoft.com/fwlink/?LinkId=734968" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=734968"><span ng-bind="'BRANDS.REPORT_BUILDER' | translate" class="ng-binding">Report Builder</span></a></li>
+                    <li class="hide-nonwindows"><a ng-href="https://go.microsoft.com/fwlink/?LinkID=734969" target="_blank" href="https://go.microsoft.com/fwlink/?LinkID=734969"><span ng-bind="'BRANDS.MOBILE_REPORT_PUBLISHER' | translate" class="ng-binding">Mobile Report Publisher</span></a></li>
+                    <li class="hide-nonwindows"><a ng-href="https://go.microsoft.com/fwlink/?LinkId=734766" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=734766"><span ng-bind="'BRANDS.DESKTOP_POWER_BI' | translate" class="ng-binding">Power BI Desktop</span></a></li>
+                    <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=717195" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=717195"><span ng-bind="'BRANDS.MOBILE_POWER_BI' | translate" class="ng-binding">Power BI Mobile</span></a></li>
+                </ul>
+            </div>
+
+            <div class="mobilenav-help-menu dropdown mobile-dropdown">
+                <ul class="dropdown-menu">
+                    <li class="mobilenav-back">
+                        <a href="javascript:void(0);" data-target=".mobilenav-main-menu,a.mobilenav-toggle" data-toggle="dropdown">
+                            <span class="glyphui glyphui-chevron-left"></span>
+                            <span ng-bind="'ACTIONS.BACK' | translate" class="ng-binding">Back</span>
+                        </a>
+                    </li>
+                    <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=718201" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=718201"><span ng-bind="'NAVBAR.GETTING_STARTED' | translate" class="ng-binding">Getting started</span></a></li>
+                    <li><a ng-href="https://go.microsoft.com/fwlink/?LinkId=718204" target="_blank" href="https://go.microsoft.com/fwlink/?LinkId=718204"><span ng-bind="'NAVBAR.COMMUNITY' | translate" class="ng-binding">Community</span></a></li>
+                    <li><a href="javascript:void(0);" ng-click="openAbout()"><span ng-bind="'NAVBAR.ABOUT' | translate" class="ng-binding">About SQL Server Reporting Services</span></a></li>
+                </ul>
+            </div>
+
+        </div><!-- end ngIf: enableNavigation -->
+        <!-- ## mobile nav ## -->
+    </div>
+</nav></navbar>
+        </header><!-- end ngIf: showChrome -->
+
+        <!-- ngIf: main.serviceState.isAvailable && showChrome --><section id="subnav" class="subnav navbar-fixed-top ng-scope" ng-if="main.serviceState.isAvailable &amp;&amp; showChrome">
+            <subnav><nav class="toolbar">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            <li class="nav-favs">
+                <a href="favorites" ng-class="{ active: isActive('/favorites') }" role="button" aria-pressed="false">
+                    <span class="glyphui glyphui-star" aria-hidden="true"></span>
+                    <span ng-bind="'FAVORITES.FAVORITES' | translate" class="ng-binding">Favorites</span>
+                </a>
+            </li>
+            <li class="nav-browse">
+                <a href="browse/" ng-class="{ active: isActive('/browse') }" role="button" aria-pressed="false">
+                    <span class="glyphui glyphui-folder" aria-hidden="true"></span>
+                    <span ng-bind="'ACTIONS.BROWSE' | translate" class="ng-binding">Browse</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul class="nav toolbar-nav">
+            <!-- ngIf: canManageFolder -->
+
+            <!-- ngIf: canCreateAnything -->
+
+            <!-- ngIf: canCreateAnything -->
+
+            <li class="nav-display dropdown" uib-dropdown="" auto-close="outsideClick" aria-haspopup="true">
+                <a href="javascript:void(0);" alt="View" aria-label="View" uib-dropdown-toggle="" uib-tooltip="View" tooltip-append-to-body="true" tooltip-class="visible-sm-inline-block visible-xs-inline-block" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphui glyphui-funnel" aria-hidden="true"></span>
+                    <span id="nav-display-label" class="text hidden-xs ng-binding" ng-bind="'NAVBAR.VIEW' | translate">View</span>
+                    <span class="caret hidden-xs"></span>
+                </a>
+
+                <ul class="dropdown-checkboxes dropdown-menu" uib-dropdown-menu="" aria-labelledby="nav-display-label">
+                    <li class="dropdown-header">
+                        <span ng-bind="'NAVBAR.VISIBILITY' | translate" class="ng-binding">Visibility</span>
+                    </li>
+
+                    <li class="checkable checked" ng-class="{checked:display.hidden}" tabindex="1" style="">
+                        <a href="javascript:void(0);" ng-click="toggleDisplay('hidden')" role="checkbox" aria-label="Show hidden items" aria-checked="true">
+                            <span class="checkbox-toggle">
+                                <span class="glyphui glyphui-checkbox-outline-empty unchecked"></span>
+                                <span class="glyphui glyphui-checkbox-solid-checked checked"></span>
+                            </span>
+                            <span ng-bind="'NAVBAR.SHOW_HIDDEN' | translate" class="ng-binding">Show hidden items</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- search for large screen  -->
+            <li class="nav-search hidden-xs">
+                <form role="search" class="ng-pristine ng-valid">
+                    <div class="input-group">
+                        <input type="text" class="form-control ng-pristine ng-untouched ng-valid" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search..." aria-label="Search" ng-focus="searchText.placeholder = searchText.focused" ng-blur="searchText.placeholder = searchText.blurred" ng-model="searchText.text">
+                        <span class=" input-group-btn">
+                            <button class="btn btn-default" type="submit" ng-click="search()"><span class="glyphui glyphui-loupe" aria-label="Search"></span></button>
+                        </span>
+                    </div>
+                </form>
+            </li>
+
+            <!-- search for small screen -->
+            <li class="nav-search visible-xs-inline-block dropdown" uib-dropdown="">
+                <a href="javascript:void(0);" alt="Search" aria-label="Search" uib-dropdown-toggle="" uib-tooltip="Search" tooltip-append-to-body="true" tooltip-placement="left" tooltip-class="visible-sm-inline-block visible-xs-inline-block" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                    <span class="glyphui glyphui-loupe" aria-hidden="true"></span>
+                    <span id="nav-compact-search-label" class="sr-only ng-binding" ng-bind="'NAVBAR.SEARCH' | translate">Search</span>
+                </a>
+                <ul uib-dropdown-menu="" aria-labelledby="nav-compact-search-label" class="dropdown-menu">
+                    <li>
+                        <form role="search" class="ng-pristine ng-valid">
+                            <input type="text" class="form-control ng-pristine ng-untouched ng-valid" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search..." ng-focus="searchText.placeholder = searchText.focused" ng-blur="searchText.placeholder = searchText.blurred" ng-model="searchText.text" ng-keyup="$event.which == 13 &amp;&amp; search()">
+                        </form>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav></subnav>
+        </section><!-- end ngIf: main.serviceState.isAvailable && showChrome -->
+
+        <section id="main" class="main" ng-class="{'hideChrome': !showChrome}">
+            <!-- uiView:  --><div class="view ng-scope" ui-view=""><paginated-report-viewer class="ng-scope"><div class="viewerContentContainer showChrome" ng-class="{'showChrome': showChrome, 'hideChrome': !showChrome}">
+    <section class="breadcrumbs">
+        <breadcrumbs class="ng-isolate-scope"><div class="links">
+    <a href="browse/" class="i18n ng-binding" ng-bind="'COMMON.ROOT_FOLDER' | translate">Home</a>
+
+    <!-- ngRepeat: breadcrumb in items --><span ng-repeat="breadcrumb in items" class="ng-scope">
+        <span class="glyphui glyphui-chevron-right separator"></span>
+        <!-- ngIf: !$last --><a href="browse/QM2%20Customized%20Reports" ng-if="!$last" class="ng-binding ng-scope">QM2 Customized Reports</a><!-- end ngIf: !$last -->
+        <!-- ngIf: $last -->
+    </span><!-- end ngRepeat: breadcrumb in items --><span ng-repeat="breadcrumb in items" class="ng-scope">
+        <span class="glyphui glyphui-chevron-right separator"></span>
+        <!-- ngIf: !$last -->
+        <!-- ngIf: $last --><span class="current ng-binding ng-scope" ng-if="$last">Defect Report_mirror</span><!-- end ngIf: $last -->
+    </span><!-- end ngRepeat: breadcrumb in items -->
+</div></breadcrumbs>
+    </section>
+
+    <iframe ng-show="!failureReason" seamless="seamless" frameborder="0" class="viewer" ng-src="/ReportServer/Pages/ReportViewer.aspx?%2FQM2%20Customized%20Reports%2FDefect%20Report_mirror&amp;rc:showbackbutton=true" src="/ReportServer/Pages/ReportViewer.aspx?%2FQM2%20Customized%20Reports%2FDefect%20Report_mirror&amp;rc:showbackbutton=true"></iframe>
+
+    <!-- ngIf: !!failureReason -->
+
+    <div class="screen-reader-offscreen ng-binding" aria-live="polite">Loading done</div>
+</div></paginated-report-viewer></div>
+        </section>
+    </div>
+
+    
+
+    <script type="text/javascript">
+        // inject:js
+        document.write("<script src='assets/js/app-13-0-1601-5-bundle.min.js'><\/script>");
+        // endinject:js
+    </script><script src="assets/js/app-13-0-1601-5-bundle.min.js"></script>
+
+
+</body></html>
