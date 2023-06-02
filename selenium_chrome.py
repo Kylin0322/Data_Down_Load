@@ -40,7 +40,24 @@ class webdriver_chrome():
         # input username
         TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
         TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
         TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
+        
         TextBox3 = self.driver.find_element(By.ID, "headID")
         TextBox3 = self.driver.find_element(By.XPATH, "//form[@id='loginForm']")
 
