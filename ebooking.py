@@ -132,21 +132,7 @@ def run_task():
 
 
 if __name__ == '__main__':
-    scheduler = AsyncIOScheduler()
-    scheduler.add_job(run_task, 'cron', day="*", hour=1, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=3, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=5, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=7, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=9, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=11, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=13, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=15, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=17, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=19, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=21, minute=59, second=45)
-    scheduler.add_job(run_task, 'cron', day="*", hour=23, minute=59, second=45)
-    scheduler.start()
-
+  
     # Execution will block here until Ctrl+C (Ctrl+Break on Windows) is pressed.
     try:
         asyncio.get_event_loop().run_forever()
