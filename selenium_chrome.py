@@ -17,11 +17,13 @@ class webdriver_chrome():
         # headless 模式 不打开UI界面的情况下使用 Chrome 浏览器
         # self.option.add_argument('headless')
         # 谷歌文档提到需要加上这个属性来规避bug
-        self.option.add_argument('--disable-gpu')
+        # self.option.add_argument('--disable-gpu')
+        
         # 不加载图片, 提升速度
-        self.option.add_argument('blink-settings=imagesEnabled=false')
+        # self.option.add_argument('blink-settings=imagesEnabled=false')
+        
         # 以最高权限运行
-        self.option.add_argument('--no-sandbox')
+        #self.option.add_argument('--no-sandbox')
 
         #self.option.page_load_strategy = 'normal'
         self.option.page_load_strategy = 'eager'    #WebDriver waits until DOMContentLoaded event fire is returned.
@@ -35,7 +37,6 @@ class webdriver_chrome():
         self.web_address ="http://cnhuam0rptq01/reports/report/QM2%20Customized%20Reports/Defect%20Report_mirror"
         #self.web_address ="http://10.114.26.174:8002/"
         
-
     def save_page(self,page):
         with open(file="page.html",mode="w",encoding="utf-8") as f:
             f.write(page) 
@@ -49,7 +50,7 @@ class webdriver_chrome():
         finally:
             driver.quit()
     
-    def wait_until_element_found(self,Element1="</html>",timeout=60):
+    def wait_until_element_found(self,Element1="</html>",timeout=180):
         ''' 等待字符串str1在 page_source 中出现
         '''
         el=None
@@ -83,13 +84,54 @@ class webdriver_chrome():
             t=t+1
         return el
 
+    def check_element_enabled(self,value="value",timeout=180):
+        ''' 检查 Element 是否存在，并且是 Enabled
+        '''
+        el=None
+        t=1
+        while el==None and t<timeout:
+            if el==None:
+                try:
+                    el=self.driver.find_element(by=By.NAME,value=value)
+                    if not el.is_enabled():
+                        el=None
+                except:
+                    el=None
+                finally:
+                    pass
+
+            if el==None:
+                try:
+                    el=self.driver.find_element(by=By.ID,value=value)
+                    if not el.is_enabled():
+                        el=None
+                except:
+                    el=None
+                finally:
+                    pass
+
+            if el==None:
+                try:
+                    el=self.driver.find_element(by=By.CLASS_NAME,value=value)
+                    if not el.is_enabled():
+                        el=None
+                except:
+                    el=None
+                finally:
+                    pass
+
+            time.sleep(1)
+            t=t+1
+
+        return el
+
 
     # 使用谷歌浏览器模拟执行
     def open_web(self):
 
         print('打开网页')
         self.driver.get(self.web_address)  # 打开url网页
-        self.driver.implicitly_wait(60)
+        #self.driver.implicitly_wait(60)
 
         #self.driver_Org=self.driver
 
@@ -99,132 +141,61 @@ class webdriver_chrome():
         # iframe = self.driver.find_element(By.CSS_SELECTOR, "#modal > iframe")
         #iframe = self.driver.find_element(By.CLASS_NAME, "view")
         # switch to selected iframe
+        self.wait_until_element_found(Element1='viewer')
         self.driver.switch_to.frame(0)
-        self.wait_until_element_found(Element1='ParamEntryCell')
+        time.sleep(5)
+ 
         self.wait_until_element_found(Element1='ReportViewerControl$ctl04$ctl03$ddValue')
         time.sleep(2)
 
-
         print('Select Customer')
-        TextBox3 = self.driver.find_element(By.NAME, "ReportViewerControl$ctl04$ctl03$ddValue")
-        TextBox3.click()    #Ok.
-        TextBox3.send_keys("HP/Printer Motherboard")
+        customer_select= Select(self.driver.find_element(By.ID, 'ReportViewerControl_ctl04_ctl03_ddValue'))
+        # customer_select.select_by_value("HP/Printer Motherboard")
+        customer_select.select_by_index(57)
+        self.check_element_enabled(value="ReportViewerControl$ctl04$ctl05$ddValue")
+        time.sleep(2)
+
+        print('Input start date')   # input start date
+        start_time=self.driver.find_element(By.ID,"ReportViewerControl_ctl04_ctl09_txtValue")
+        start_time.clear()
+        date=datetime.datetime.now()+datetime.timedelta(days=-1)
+        start_time.send_keys(date.strftime("%Y-%m-%d 07:00:00"))
+        time.sleep(1)
+
+        print('input end date') # input end date
+        end_time=self.driver.find_element(By.ID,"ReportViewerControl_ctl04_ctl11_txtValue")
+        end_time.clear()
+        end_time.send_keys(datetime.datetime.now().strftime("%Y-%m-%d 07:00:00"))
+        time.sleep(1)
+
+        print('click View Report')  # click View Report
+        view_report = self.driver.find_element(By.ID, "ReportViewerControl_ctl04_ctl00")
+        view_report.click()
 
 
-
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.NAME, "xxxxxxxxxxxxx")
-
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ParamLabelCell")   #OK
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "ParamEntryCell")   #OK
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.CLASS_NAME, "xxxxxxxxxxxxx")
-
-        TextBox3 = self.driver.find_element(By.ID, "NavigationCorrector")   #OK
-        TextBox3 = self.driver.find_element(By.ID, "NavigationCorrector_ctl00") #OK
-        TextBox3 = self.driver.find_element(By.ID, "ReportViewerControl_ctl04_ctl03") #OK
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
-        TextBox3 = self.driver.find_element(By.ID, "xxxxxxxxxxxxx")
+        print('wait webload complete')  # click View Report
+        self.check_element_enabled(value="ReportViewerControl_ctl04_ctl00",timeout=300)
 
 
+        print('Click save buttom')  # 
+        tag_1= self.driver.find_element(By.ID, 'ReportViewerControl_ctl05_ctl04_ctl00_ButtonImg')
+        tag_1.click()
+        time.sleep(3)
 
-  
+        print('Select csv data to download')  # 
+        tag2= self.driver.find_element(By.XPATH, "//a[@title='CSV (comma delimited)']")
+        tag2.click()
 
-        TextBox3.get_attribute()
-        TextBox3.click()
-        TextBox3.id.count()
-        
-        TextBox3.clear()  # 清除文本
-        TextBox3.send_keys("Sunmoon_she@jabil.com")  # 模拟按键输入
+        print('wait save complete')  # click View Report
+        self.check_element_enabled(value="ReportViewerControl_ctl04_ctl00",timeout=300)
 
-        # # inpout passwd
-        # TextBox4 = driver.find_element(By.NAME, "TextBox4")
-        # TextBox4.clear()
-        # TextBox4.send_keys("sunmoon")
+        print('wait save complete')
+        time.sleep(10)
 
-        # # click login button
-        # Button2 = driver.find_element(By.ID, "Button2")
-        # Button2.click()
-        # # input Booking S/N
-        # TextBox2 = driver.find_element(By.NAME, "TextBox2")
-        # TextBox2.clear()
-        # TextBox2.send_keys(sn)
+        print('close chrome and exit')
+        self.driver.close()
 
-        # # select datetime
-        # DropDownList1 = Select(driver.find_element(By.NAME, "DropDownList1"))
-        # optionLen = len(DropDownList1.options)
-        # DropDownList1.select_by_index(optionLen-1)
 
-        # # Verification
-        # checkNumber = driver.find_element(By.ID, "Label4").text
-        # if checkNumber.find("+") >= 0:
-        #     num1 = checkNumber.split('+')[0]
-        #     num2 = checkNumber.split('+')[1].split('=')[0]
-        #     TextBox5 = driver.find_element(By.NAME, "TextBox5")
-        #     TextBox5.clear()
-        #     TextBox5.send_keys(int(num1)+int(num2))
-
-        # # Click Booking S/N
-        # Button1 = driver.find_element(By.NAME, "Button1")
-        # Button1.click()
-
-        # # 响应文本
-        # res_txt = ""
-
-        # # 是否有alert告警弹窗
-        # alert = EC.alert_is_present()(driver)
-        # if alert:
-        #     res_txt = alert.text
-        #     alert.accept()
-
-        # # Model Number/ Message
-        # res_txt = res_txt + driver.find_element(By.ID, "Label1").text
-
-        # with open('./booking_log.txt', "a") as f:
-        #     f.write(datetime.datetime.now().strftime(
-        #         "%Y-%m-%d %H:%M:%S")+"\t"+res_txt+"\n")
-
-        # # 判断是否预定成功,成功则从sn文件中删除
-        # if res_txt.find("MES Checking Succeed") >= 0:
-        #     with open('./sn.txt', "w") as f:
-        #         f.writelines(sn_list)
-        #     with open('./succeed_sn.txt', "a") as f:
-        #         f.write(datetime.datetime.now().strftime(
-        #             "%Y-%m-%d %H:%M:%S")+"\t"+sn+"\n")
-
-        # # 判断是否已被预定,是则从sn文件中删除
-        # if res_txt.find("has been booked  already") >= 0:
-        #     with open('./sn.txt', "w") as f:
-        #         f.writelines(sn_list)
-        #     with open('./booked_sn.txt', "a") as f:
-        #         f.write(datetime.datetime.now().strftime(
-        #             "%Y-%m-%d %H:%M:%S")+"\t"+sn+"\n")
-
-        # return False
- 
 
 
 if __name__ == '__main__':
