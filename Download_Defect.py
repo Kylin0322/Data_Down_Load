@@ -5,16 +5,24 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import datetime
 import time
+import os,shutil
 
 class webdriver_chrome():
     ''' Auto download defect report form web. use selenium.
         test pass on 3 Jun by Yu Wang
     '''
     def __init__(self) -> None:
+        self.org_path=r'C:\Users\wangyu\Downloads'
+        self.des_path=r'\\CNHUAHPFVT004\Share\HP'
         pass
 
     def init(self):
 
+        self.org_path=r'C:\Users\wangyu\Downloads'
+        self.des_path=r'\\CNHUAHPFVT004\Share\HP'
+        self.date_time=datetime.datetime.now()
+
+        
         self.web_address ="http://cnhuam0rptq01/reports/report/QM2%20Customized%20Reports/Defect%20Report_mirror"
 
         self.option = webdriver.ChromeOptions()
@@ -22,6 +30,7 @@ class webdriver_chrome():
         self.option.add_experimental_option("detach", True)
         # headless 模式 不打开UI界面的情况下使用 Chrome 浏览器
         # self.option.add_argument('headless')
+        
         # 谷歌文档提到需要加上这个属性来规避bug
         # self.option.add_argument('--disable-gpu')
         
@@ -39,9 +48,6 @@ class webdriver_chrome():
         
         self.driver = webdriver.Chrome(options=self.option)  # 打开Chrome浏览器UI界面配置
         
-
-        
-        #self.web_address ="http://10.114.26.174:8002/"
         
     def save_page(self,page):
         with open(file="page.html",mode="w",encoding="utf-8") as f:
@@ -131,9 +137,10 @@ class webdriver_chrome():
 
         return el
 
-
     # 使用谷歌浏览器模拟执行
     def open_web(self):
+        ''' 打开浏览器下载数据，并将数据保存到
+        '''
 
         print('打开网页')
         self.driver.get(self.web_address)  # 打开url网页
@@ -196,18 +203,48 @@ class webdriver_chrome():
         self.check_element_enabled(value="ReportViewerControl_ctl04_ctl00",timeout=300)
 
         print('wait save complete')
-        time.sleep(10)
+        self.check_element_enabled(value="ReportViewerControl$ctl04$ctl05$ddValue")
+        time.sleep(20)
 
         print('close chrome and exit')
         self.driver.close()
 
+    def move_file(self, file_name, folder):
+        ''' Move file to folder, will cover the old file if it is exist
+        '''
+        print('move file to share folder')
+        print("file_name",file_name)
+        print("folder",folder)
 
+        shutil.move(file_name, folder)
 
+    def delete_file(self,file_name):
+        ''' 删除文件
+        '''
+        print('Try delete file')
+        try:
+            os.remove(path=file_name)
+            print('The file has removed!')
+        except:
+            print('The file has not found!')
+            pass
+
+        finally:
+            pass
 
 if __name__ == '__main__':
     web=webdriver_chrome()
     web.init()
+    #删除旧文件
+    org_path=os.path.join(web.org_path,"Defect Report_mirror.csv")
+    des_path=os.path.join(web.des_path, str(web.date_time.day) +".csv")
+    web.delete_file(file_name=org_path)
     web.open_web()
+    #Copy 文件到指定目录
+
+    web.move_file(file_name=org_path,folder=des_path)
+    #删除旧文件
+    web.delete_file(file_name=org_path)
     
   
     
