@@ -29,7 +29,7 @@ class webdriver_chrome():
         # 保持浏览器界面不关闭
         self.option.add_experimental_option("detach", True)
         # headless 模式 不打开UI界面的情况下使用 Chrome 浏览器
-        # self.option.add_argument('headless')
+        self.option.add_argument('headless')
         
         # 谷歌文档提到需要加上这个属性来规避bug
         # self.option.add_argument('--disable-gpu')
